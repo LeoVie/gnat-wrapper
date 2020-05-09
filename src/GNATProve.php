@@ -10,6 +10,8 @@ class GNATProve
     private bool $dontStopAtFirstError = false;
     private string $analyzationFile;
 
+    private string $command;
+
     private function __construct(string $projectFile)
     {
         $this->projectFile = $projectFile;
@@ -50,10 +52,16 @@ class GNATProve
 
     public function execute(): string
     {
-        return shell_exec($this->buildCommand());
+        $this->buildCommand();
+        return shell_exec($this->command);
     }
 
-    private function buildCommand(): string
+    public function getCommand(): string
+    {
+        return $this->command;
+    }
+
+    private function buildCommand(): void
     {
         $command = 'gnatprove';
         $command .= ' -P ' . realpath($this->projectFile);
@@ -66,6 +74,6 @@ class GNATProve
             $command .= ' -k';
         }
 
-        return $command;
+        $this->command = $command;
     }
 }
