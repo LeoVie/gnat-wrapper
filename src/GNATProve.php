@@ -20,6 +20,7 @@ class GNATProve
     private function __construct(string $projectFile)
     {
         $this->projectFile = $projectFile;
+        $this->buildCommand();
     }
 
     public static function create(string $projectFile): self
@@ -30,6 +31,7 @@ class GNATProve
     public function limitCoresTo(int $cores): self
     {
         $this->cores = $cores;
+        $this->buildCommand();
 
         return $this;
     }
@@ -37,6 +39,7 @@ class GNATProve
     public function level(int $level): self
     {
         $this->level = $level;
+        $this->buildCommand();
 
         return $this;
     }
@@ -44,6 +47,7 @@ class GNATProve
     public function dontStopAtFirstError(bool $dontStopAtFirstError = true): self
     {
         $this->dontStopAtFirstError = $dontStopAtFirstError;
+        $this->buildCommand();
 
         return $this;
     }
@@ -51,6 +55,7 @@ class GNATProve
     public function analyzeSingleFile(string $filename): self
     {
         $this->analyzationFile = $filename;
+        $this->buildCommand();
 
         return $this;
     }
@@ -58,6 +63,7 @@ class GNATProve
     public function mode(GNATProveMode $mode): self
     {
         $this->mode = $mode;
+        $this->buildCommand();
 
         return $this;
     }
@@ -65,6 +71,7 @@ class GNATProve
     public function reportMode(GNATProveReportMode $reportMode): self
     {
         $this->reportMode = $reportMode;
+        $this->buildCommand();
 
         return $this;
     }
@@ -72,6 +79,7 @@ class GNATProve
     public function verbose(bool $verbose = true): self
     {
         $this->verbose = $verbose;
+        $this->buildCommand();
 
         return $this;
     }
@@ -79,6 +87,7 @@ class GNATProve
     public function debug(bool $debug = true): self
     {
         $this->debug = $debug;
+        $this->buildCommand();
 
         return $this;
     }
@@ -86,14 +95,13 @@ class GNATProve
     public function strictAdaStandard(bool $strictAdaStandard = true): self
     {
         $this->strictAdaStandard = $strictAdaStandard;
+        $this->buildCommand();
 
         return $this;
     }
 
     public function execute(): string
     {
-        $this->buildCommand();
-
         return shell_exec($this->command);
     }
 
