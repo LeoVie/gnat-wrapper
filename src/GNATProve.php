@@ -11,9 +11,9 @@ class GNATProve
     private string $analyzationFile;
     private GNATProveMode $mode;
     private GNATProveReportMode $reportMode;
-    private bool $verbose;
-    private bool $debug;
-    private bool $strictAdaStandard;
+    private bool $verbose = false;
+    private bool $debug = false;
+    private bool $strictAdaStandard = false;
 
     private string $command;
 
@@ -108,7 +108,7 @@ class GNATProve
         $command .= ' -P "' . realpath($this->projectFile) . '"';
         $command .= ' -j' . $this->cores;
         $command .= ' --level=' . $this->level;
-        if ($this->analyzationFile !== '') {
+        if (isset($this->analyzationFile)) {
             $command .= ' -u ' . $this->analyzationFile;
         }
         if ($this->dontStopAtFirstError) {
