@@ -1,0 +1,19 @@
+{
+    "name": "leovie/gnat-wrapper",
+    "description": "A php wrapper for GNAT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Leo Viezens",
+            "email": "leo.viezens@web.de"
+        }
+    ],
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "LeoVie\\GNATWrapper\\": "src"
+        }
+    }
+}
