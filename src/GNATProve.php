@@ -64,7 +64,7 @@ class GNATProve
     private function buildCommand(): void
     {
         $command = 'gnatprove';
-        $command .= ' -P ' . realpath($this->projectFile);
+        $command .= ' -P "' . realpath($this->projectFile) . '"';
         $command .= ' -j' . $this->cores;
         $command .= ' --level=' . $this->level;
         if ($this->analyzationFile !== '') {
