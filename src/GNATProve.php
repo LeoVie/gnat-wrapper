@@ -114,10 +114,10 @@ class GNATProve
         if ($this->dontStopAtFirstError) {
             $command .= ' -k';
         }
-        if ($this->mode !== null) {
+        if (isset($this->mode)) {
             $command .= ' --mode=' . $this->mode->getModeString();
         }
-        if ($this->reportMode !== null) {
+        if (isset($this->reportMode)) {
             $command .= ' --report=' . $this->reportMode->getModeString();
         }
         if ($this->verbose) {
