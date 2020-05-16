@@ -30,7 +30,7 @@ class GNATPP
 
     private function buildCommand(): void
     {
-        $command = 'gnatpp ' . realpath($this->file);
+        $command = 'gnatpp "' . realpath($this->file) . '"';
 
         $this->command = $command;
     }
