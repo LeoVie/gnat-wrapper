@@ -1,6 +1,6 @@
 <?php
 
-namespace LeoVie\GNATWrapper;
+namespace LeoVie\GNATWrapper\GNATProve;
 
 class GNATProveReportMode
 {
