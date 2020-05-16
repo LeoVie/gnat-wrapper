@@ -23,9 +23,9 @@ class GNATPP
         return $this->command;
     }
 
-    public function execute(): string
+    public function execute()
     {
-        return shell_exec($this->command);
+        shell_exec($this->command);
     }
 
     private function buildCommand(): void
